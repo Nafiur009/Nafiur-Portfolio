@@ -1,0 +1,149 @@
+/* Animation Styles */
+
+/* Text Reveal Animation */
+.text-reveal {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: reveal 0.8s ease forwards;
+}
+
+.delay-1 {
+  animation-delay: 0.2s;
+}
+
+.delay-2 {
+  animation-delay: 0.4s;
+}
+
+.delay-3 {
+  animation-delay: 0.6s;
+}
+
+.delay-4 {
+  animation-delay: 0.8s;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade In Animation */
+.animate-fade-in {
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Skill Bar Animation */
+/* This will be triggered via JavaScript when the section is in view */
+.animate-skill-bar .skill-progress {
+  width: var(--progress-width); /* This will be set via inline style */
+}
+
+/* Project Card Hover Animation */
+.project-card {
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Section Reveal Animation - will be applied via JavaScript */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered reveal for multiple elements */
+.stagger-reveal > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.stagger-reveal.active > *:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.stagger-reveal.active > *:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.stagger-reveal.active > *:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.stagger-reveal.active > *:nth-child(4) {
+  transition-delay: 0.4s;
+}
+
+.stagger-reveal.active > *:nth-child(5) {
+  transition-delay: 0.5s;
+}
+
+.stagger-reveal.active > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Add this script after the page loads to detect when elements are in viewport */
+window.addEventListener('DOMContentLoaded', () => {
+  // Reveal animations on scroll
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.15
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        
+        // For skill bars, set their width
+        if (entry.target.classList.contains('skills')) {
+          document.querySelectorAll('.skill-progress').forEach(bar => {
+            const percentage = bar.parentElement.previousElementSibling.lastElementChild.textContent;
+            bar.style.width = percentage;
+          });
+        }
+        
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+  
+  // Observe sections
+  document.querySelectorAll('section').forEach(section => {
+    section.classList.add('reveal');
+    observer.observe(section);
+  });
+  
+  // Observe staggered elements
+  document.querySelectorAll('.skill-category, .contact-info, .about-stats').forEach(element => {
+    element.classList.add('stagger-reveal');
+    observer.observe(element);
+  });
+});

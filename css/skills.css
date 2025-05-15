@@ -1,0 +1,84 @@
+/* Skills Section Styles */
+.skills {
+  background-color: var(--bg-secondary);
+}
+
+.skills-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.skills-text {
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.skills-text p {
+  color: var(--text-secondary);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-6);
+}
+
+.skill-category h3 {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-4);
+  color: var(--primary-500);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.skill-item {
+  margin-bottom: var(--space-4);
+}
+
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-2);
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.skill-bar {
+  height: 8px;
+  background-color: var(--bg-tertiary);
+  border-radius: var(--border-radius-full);
+  overflow: hidden;
+}
+
+.skill-progress {
+  height: 100%;
+  background: linear-gradient(to right, var(--primary-500), var(--accent-500));
+  border-radius: var(--border-radius-full);
+  transition: width 1.5s ease;
+  width: 0;
+}
+
+/* Animation for skill bars - will be controlled via JavaScript */
+.skill-item:nth-child(1) .skill-progress {
+  transition-delay: 0.1s;
+}
+
+.skill-item:nth-child(2) .skill-progress {
+  transition-delay: 0.2s;
+}
+
+.skill-item:nth-child(3) .skill-progress {
+  transition-delay: 0.3s;
+}
+
+.skill-item:nth-child(4) .skill-progress {
+  transition-delay: 0.4s;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+}

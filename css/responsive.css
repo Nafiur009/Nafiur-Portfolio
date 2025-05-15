@@ -1,0 +1,195 @@
+/* Responsive Styles */
+
+/* Extra Small devices (phones, 480px and down) */
+@media only screen and (max-width: 480px) {
+  :root {
+    --font-size-6xl: 2.5rem; /* 40px */
+    --font-size-5xl: 2rem;   /* 32px */
+    --font-size-4xl: 1.75rem; /* 28px */
+    --font-size-3xl: 1.5rem;  /* 24px */
+  }
+  
+  .container {
+    padding: 0 var(--space-3);
+  }
+  
+  section {
+    padding: var(--space-7) 0;
+  }
+  
+  .hero {
+    height: auto;
+    min-height: 100vh;
+    padding-top: var(--space-8);
+  }
+  
+  .theme-toggle {
+    top: var(--space-3);
+    right: var(--space-3);
+  }
+  
+  .switch-label {
+    width: 40px;
+    height: 40px;
+  }
+  
+  /* Hero adjustments for xs screens */
+  .hero-content h1 {
+    font-size: var(--font-size-4xl);
+  }
+  
+  .hero-content h2 {
+    font-size: var(--font-size-xl);
+  }
+  
+  .hero-content p {
+    font-size: var(--font-size-md);
+  }
+  
+  .hero-cta {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .hero-cta .btn {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .image-container {
+    width: 220px;
+    height: 220px;
+  }
+  
+  /* About section adjustments */
+  .about-stats {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+  
+  /* Project section adjustments */
+  .project-filters {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+  
+  .filter-btn {
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--font-size-xs);
+  }
+  
+  /* Contact section adjustments */
+  .contact-form {
+    padding: var(--space-4);
+  }
+  
+  .form-group {
+    margin-bottom: var(--space-3);
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .container {
+    padding: 0 var(--space-4);
+  }
+  
+  .hero {
+    height: auto;
+    min-height: 100vh;
+  }
+  
+  .image-container {
+    width: 280px;
+    height: 280px;
+  }
+  
+  /* Contact section adjustments */
+  .contact-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media only screen and (min-width: 769px) and (max-width: 992px) {
+  .hero .container {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .hero-content p {
+    margin: 0 auto var(--space-5);
+  }
+  
+  .hero-cta {
+    justify-content: center;
+  }
+  
+  .about-content {
+    flex-direction: column-reverse;
+  }
+  
+  .contact-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-3);
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media only screen and (min-width: 993px) and (max-width: 1200px) {
+  .contact-content {
+    gap: var(--space-5);
+  }
+  
+  .contact-card {
+    padding: var(--space-3);
+  }
+}
+
+/* Dark mode specific adjustments */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: var(--neutral-900);
+    --bg-secondary: var(--neutral-800);
+    --bg-tertiary: var(--neutral-700);
+    --text-primary: var(--neutral-50);
+    --text-secondary: var(--neutral-300);
+    --text-tertiary: var(--neutral-500);
+    --border-color: var(--neutral-700);
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    background-color: white !important;
+    color: black !important;
+  }
+  
+  header, footer, .theme-toggle, .scroll-indicator {
+    display: none !important;
+  }
+  
+  .hero, section {
+    height: auto !important;
+    padding: 2rem 0 !important;
+  }
+  
+  a {
+    text-decoration: underline !important;
+    color: black !important;
+  }
+  
+  .btn {
+    border: 1px solid black !important;
+    background: none !important;
+    color: black !important;
+  }
+}
